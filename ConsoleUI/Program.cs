@@ -15,6 +15,10 @@ namespace ConsoleUI
             list(manager);
             manager.Update(new Car { Id = 4, ModelYear = 2019 });
             list(manager);
+            manager.Delete(new Car { Id = 4 });
+            list(manager);
+           var car= manager.GetById(1);
+            Console.WriteLine("id: "+car.Id +" model year: " +car.ModelYear+" description: " +car.Description);
         }
         private static void list(CarManager manager)
         {
@@ -22,6 +26,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine("ID " + car.Id + "  YEAR " + car.ModelYear);
             }
+            Console.WriteLine("Operation Completed");
         }
     }
 }

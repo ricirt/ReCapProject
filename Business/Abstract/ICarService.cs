@@ -15,6 +15,8 @@ namespace Business.Abstract
         void Delete(Car car);
         Car GetById(int id);
         List<Car> GetAllBrandId(int id);
+        Car GetCarsByBrandId(int id);
+        Car GetCarsByColorId(int id);
 
     }
 }

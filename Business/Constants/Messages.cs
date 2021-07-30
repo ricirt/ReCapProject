@@ -9,15 +9,19 @@ namespace Business.Constants
     public static class Messages
     {
         public static string CarAdded = "Araba eklendi.";
+        public static string UserAdded = "Kullanıcı eklendi.";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string CarIsStillRented = "Araba sahibinden geri dönmedi";
 
-        public static string CarUpdated { get; internal set; }
-        public static string CarDeleted { get; internal set; }
-        public static string BrandUpdated { get; internal set; }
-        public static string BrandDeleted { get; internal set; }
-        public static string BrandAdded { get; internal set; }
-        public static string ColorUpdated { get; internal set; }
-        public static string ColorDeleted { get; internal set; }
-        public static string ColorAdded { get; internal set; }
-        public static string ColorsListed { get; internal set; }
+        public static string CarUpdated = "Araba bilgileri Güncellendi";
+        public static string CarDeleted = "Araba Silindi";
+        public static string BrandUpdated = "Marka bilgileri güncellendi";
+        public static string BrandDeleted = "Marka silindi";
+        public static string BrandAdded = "Marka Eklendi";
+        public static string ColorUpdated = "Renk bilgileri güncellendi";
+        public static string ColorDeleted = "Renk silindi";
+        public static string ColorAdded = "Renk eklendi";
+        public static string ColorsListed = "Renkler Listelendi";
     }
 }

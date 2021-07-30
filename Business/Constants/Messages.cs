@@ -23,5 +23,6 @@ namespace Business.Constants
         public static string ColorDeleted = "Renk silindi";
         public static string ColorAdded = "Renk eklendi";
         public static string ColorsListed = "Renkler Listelendi";
+        public static string CarInvalid = "Araba eklenemedi";
     }
 }

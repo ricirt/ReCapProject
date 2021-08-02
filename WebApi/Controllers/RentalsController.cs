@@ -11,18 +11,18 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class RentalsController : ControllerBase
     {
-        ICarService _carService;
-        public CarsController(ICarService carService)
-        {
-            _carService = carService;
-        }
+        IRentalService _rentalService;
 
+        public RentalsController(IRentalService rentalService)
+        {
+            _rentalService = rentalService;
+        }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _rentalService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,25 +30,25 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
         [HttpPost("Add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Rental rental)
         {
-            var result = _carService.Add(car);
+            var result = _rentalService.Add(rental);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
         }
         [HttpPost("Update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Rental rental)
         {
-            var result = _carService.Update(car);
+            var result = _rentalService.Update(rental);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Rental rental)
         {
-            var result = _carService.Delete(car);
+            var result = _rentalService.Delete(rental);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -56,23 +56,7 @@ namespace WebApi.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(int id)
         {
-            var result = _carService.GetById(id);
-            if (result.Success)
-                return Ok(result);
-            return BadRequest(result);
-        }
-        [HttpGet("GetCarsByBrandId")]
-        public IActionResult GetCarsByBrandId(int brandId)
-        {
-            var result = _carService.GetCarsByBrandId(brandId);
-            if (result.Success)
-                return Ok(result);
-            return BadRequest(result);
-        }
-        [HttpGet("GetCarsByColorId")]
-        public IActionResult GetCarsByColorId(int colorId)
-        {
-            var result = _carService.GetCarsByColorId(colorId);
+            var result = _rentalService.GetById(id);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);

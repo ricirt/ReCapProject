@@ -11,18 +11,18 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        ICarService _carService;
-        public CarsController(ICarService carService)
-        {
-            _carService = carService;
-        }
+        IColorService _colorService;
 
+        public ColorsController(IColorService colorService)
+        {
+            _colorService = colorService;
+        }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _colorService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,25 +30,25 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
         [HttpPost("Add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Color color)
         {
-            var result = _carService.Add(car);
+            var result = _colorService.Add(color);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
         }
         [HttpPost("Update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Color color)
         {
-            var result = _carService.Update(car);
+            var result = _colorService.Update(color);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Color color)
         {
-            var result = _carService.Delete(car);
+            var result = _colorService.Delete(color);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -56,23 +56,7 @@ namespace WebApi.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(int id)
         {
-            var result = _carService.GetById(id);
-            if (result.Success)
-                return Ok(result);
-            return BadRequest(result);
-        }
-        [HttpGet("GetCarsByBrandId")]
-        public IActionResult GetCarsByBrandId(int brandId)
-        {
-            var result = _carService.GetCarsByBrandId(brandId);
-            if (result.Success)
-                return Ok(result);
-            return BadRequest(result);
-        }
-        [HttpGet("GetCarsByColorId")]
-        public IActionResult GetCarsByColorId(int colorId)
-        {
-            var result = _carService.GetCarsByColorId(colorId);
+            var result = _colorService.GetById(id);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);

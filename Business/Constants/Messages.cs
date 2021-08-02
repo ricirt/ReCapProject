@@ -24,5 +24,6 @@ namespace Business.Constants
         public static string ColorAdded = "Renk eklendi";
         public static string ColorsListed = "Renkler Listelendi";
         public static string CarInvalid = "Araba eklenemedi";
+        public static string StartsWithF = "Araba isimleri F harfiyle başlamalı";
     }
 }

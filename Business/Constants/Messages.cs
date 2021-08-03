@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        public static string İmageCountInvalid = "Arabaların resim sayısı 5 ten fazla olamaz.";
         public static string CarAdded = "Araba eklendi.";
         public static string UserAdded = "Kullanıcı eklendi.";
         public static string UserDeleted = "Kullanıcı silindi";
@@ -25,5 +27,14 @@ namespace Business.Constants
         public static string ColorsListed = "Renkler Listelendi";
         public static string CarInvalid = "Araba eklenemedi";
         public static string StartsWithF = "Araba isimleri F harfiyle başlamalı";
+        public static string CarImageAdded="Araba resmi eklendi";
+        public static string CarImageInvalid = "Araba  resmi eklenemedi";
+        public static string CarImageCouldntDelete;
+        public static string CarImageDeleted;
+        public static string CarImagesCouldntListed;
+        public static string CarImagesCouldntGet;
+        public static string CarImageUpdated;
+        public static string CarImageCouldntUpdated;
+        public static string ImagesNotFound = "Resim bulunamadı";
     }
 }

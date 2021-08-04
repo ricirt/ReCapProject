@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -23,7 +25,7 @@ namespace Business.Concrete
             _fileHelper = fileHelper;
             _imageDal = imageDal;
         }
-
+        [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage image, IFormFile file)
         {
             var result = CheckImageLimitExceeded(image.CarId);
@@ -81,6 +83,7 @@ namespace Business.Concrete
             return new ErrorDataResult<List<CarImage>>(Messages.ImagesNotFound);
         }
 
+        [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(CarImage image, IFormFile file)
         {
             var result  = _imageDal.Get(i => i.Id == image.Id);

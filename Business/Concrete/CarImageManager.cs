@@ -2,6 +2,7 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac;
+using Core.Utilities.Business;
 using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -28,15 +29,11 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage image, IFormFile file)
         {
-            var result = CheckImageLimitExceeded(image.CarId);
+            //Logic Code Control
+            var result = BusinessRules.Run(CheckImageLimitExceeded(image.CarId));
             if (!result.Success)
             {
-                return new ErrorResult(result.Message);
-            }
-            var imagesCount = _imageDal.GetAll(i => i.CarId == image.CarId).Count;
-            if (imagesCount > 5)
-            {
-                return new ErrorResult(Messages.İmageCountInvalid);
+                return result;
             }
             var imageResult = _fileHelper.Upload(file);
             if (!imageResult.Success)

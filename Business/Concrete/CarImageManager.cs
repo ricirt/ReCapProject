@@ -31,17 +31,18 @@ namespace Business.Concrete
         {
             //Logic Code Control
             var result = BusinessRules.Run(CheckImageLimitExceeded(image.CarId));
-            if (!result.Success)
+            if (result != null)
             {
                 return result;
             }
-            var imageResult = _fileHelper.Upload(file);
-            if (!imageResult.Success)
-            {
-                return new ErrorResult(imageResult.Message);
-            }
+            var imageResult = IsImageUploaded(file);
+            //var imageResult = _fileHelper.Upload(file);
+            //if (!imageResult.Success)
+            //{
+            //    return new ErrorResult(imageResult.Message);
+            //}
             image.CreateDate = DateTime.Now;
-            image.Path = imageResult.Data;
+            image.Path = imageResult.Data.Data;
             _imageDal.Add(image);
 
             return new SuccessResult(Messages.CarImageAdded);
@@ -113,7 +114,16 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        //private IDataResult<Lis>
+        private IDataResult<IDataResult<string>> IsImageUploaded(IFormFile file)
+        {
+            var imageResult = _fileHelper.Upload(file);
+            if (!imageResult.Success)
+            {
+                return new ErrorDataResult<IDataResult<string>>(imageResult.Message);
+            }
+            return new SuccessDataResult<IDataResult<string>>(data: imageResult);
+        }
+
     }
 }
 

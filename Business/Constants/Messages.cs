@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,5 +37,6 @@ namespace Business.Constants
         public static string CarImageUpdated;
         public static string CarImageCouldntUpdated;
         public static string ImagesNotFound = "Resim bulunamadı";
+        public static string AuthorizationDenied = "Yetkiniz yok.";
     }
 }
